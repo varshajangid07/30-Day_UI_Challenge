@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        body{
+            display: flex;
+            justify-content: center; /* Centers horizontally */
+            align-items: center;     /* Centers vertically */
+            height: 100vh;           /* Ensures the body takes up the full screen height */
+            margin: 0;               /* Removes default browser margins */
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(141, 159, 223);
+        }
+        .box:hover{
+            animation-name: movement;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        @keyframes movement {
+            0%{
+                transform: translateY(0px) rotate(0deg);
+            }
+            100%{
+                transform: translateY(-100px) rotate(135deg);
+                border-radius: 50%;
+                background-color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
