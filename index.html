@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation Gallery</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: 30px;
+        }
+        a {
+            display: block;
+            width: 300px;
+            padding: 15px;
+            background-color: #333;
+            color: #FAEB36;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        a:hover {
+            background-color: #555;
+        }
+        .coming-soon {
+            color: #888;
+            background-color: #222;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My CSS Animation Gallery</h1>
+    <p>A collection of 5 pure CSS micro-interactions. Click to view!</p>
+
+    <div class="gallery">
+        <a href="Glowing.html">1. Glowing button</a>
+        <a href="day2.html" class="coming-soon">2. Coming Soon...</a>
+        <a href="day3.html" class="coming-soon">3. Coming Soon...</a>
+        <a href="day4.html" class="coming-soon">4. Coming Soon...</a>
+        <a href="day5.html" class="coming-soon">5. Coming Soon...</a>
+    </div>
+
+</body>
+</html>
