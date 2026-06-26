@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinning Conic Gradient Border</title>
+    <!-- 
+      This snippet utilizes CSS @property for smooth gradient interpolation, 
+      pseudo-elements for efficient masking, and keyframes to create 
+      a highly performant, visually complex animation entirely without JavaScript. 
+    -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background: rgb(43, 43, 43);
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            /* IMPORTANT LOGIC 1: The Spinning Beams */
+            /* The repeating-conic-gradient uses the animated '--a' variable as its starting angle. 
+               As '--a' animates from 0 to 360, the pink/transparent beams rotate around the center. */
+            background: repeating-conic-gradient(from var(--a), #ff2770 0%, #ff2770 5%, transparent 5%, transparent 40%, #ff2770 50%);
+            animation: animate 4s linear infinite;
+            border-radius: 10px;
+        }
+
+        /* IMPORTANT LOGIC 2: Registering the Angle Property */
+        /* By using @property, we explicitly tell the browser that '--a' is an <angle>. 
+           Without this, CSS cannot smoothly interpolate (animate) a gradient's starting degree 
+           from 0deg to 360deg. This makes the smooth spinning possible. */
+        @property --a{
+            syntax: '<angle>';
+            inherits: false;
+            initial-value: 0deg;
+        }
+        @keyframes animate{
+            0%{
+                --a : 0deg;
+            }
+            100%{
+                --a : 360deg;
+            }
+        }
+        .box::before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-conic-gradient(from var(--a), #45f3ff 0%, #45f3ff 5%, transparent 5%, transparent 40%, #45f3ff 50%);
+            animation: animate 4s linear infinite;
+            animation-delay: -1s;
+            border-radius: 10px;
+        }
+
+        /* IMPORTANT LOGIC 3: Masking the Center */
+        /* The ::after pseudo-element acts as a solid mask. By setting 'inset: 8px', 
+           it places a dark box right over the center of the animated gradients. 
+           This hides the messy middle and leaves only an 8px animated "border" visible around the edges. */
+        .box::after{
+            content: '';
+            position: absolute;
+            inset: 8px;
+            background-color: rgb(27, 27, 27);
+            border-radius: 10px;
+            border: 8px solid rgb(43, 43, 43);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
