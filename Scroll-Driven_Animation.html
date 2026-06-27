@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll-Driven Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 300px 20px 200px 20px;
+            color: ;
+            background-image: url('https://i.pinimg.com/1200x/c4/1a/fa/c41afabb9729f425de34c0a0247cd7e6.jpg');
+            background-size: cover;
+            background-position: center; 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-size: 100px;
+            padding: 100px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .block:nth-child(1) {
+            grid-column: span 3;
+            background-color: #FF6B6B;
+        }
+
+        .block:nth-child(2) {
+            grid-column: span 3;
+            background-color: #4ECDC4;
+        }
+
+        .block:nth-child(3) {
+            grid-column: span 2;
+            background-color: #45B7D1;
+        }
+
+        .block:nth-child(4) {
+            grid-column: span 2;
+            background-color: #96CEB4;
+        }
+
+        .block:nth-child(5) {
+            grid-column: span 2;
+            background-color: #FFEEAD;
+        }
+
+        .block:nth-child(6) {
+            grid-column: span 3;
+            background-color: #D4A5A5;
+        }
+
+        .block:nth-child(7) {
+            grid-column: span 3;
+            background-color: #9B59B6;
+        }
+
+        .block:nth-child(8) {
+            grid-column: span 6;
+            background-color: #34495E;
+        }
+
+        .block:nth-child(9) {
+            grid-column: span 3;
+            background-color: #E67E22;
+        }
+
+        .block:nth-child(10) {
+            grid-column: span 3;
+            background-color: #F1C40F;
+        }
+
+        .block {
+            height: 300px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+            animation: animate  linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+        }
+
+        @keyframes animate {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <h1>Scroll-Driven Animation</h1>
+    </div>
+    <div class="container">
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+    </div>
+</body>
+
+</html>
