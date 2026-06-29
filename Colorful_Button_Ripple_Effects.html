@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Button Ripple Effects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a; 
+            color: white;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .button-container {
+            display: flex;
+            gap: 40px; 
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 140px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            transition: 0.5s;
+            overflow: hidden;
+        }
+
+        .btn.pink {
+            border: 2px solid #ff1f71;
+            box-shadow: 0 0 5px #ff1f71, inset 0 0 10px #ff1f71;
+        }
+        .btn.pink:hover {
+            background: rgba(255, 31, 113, 0.2);
+        }
+        .btn.pink span {
+            border: 2px solid #ff1f71; 
+        }
+
+        .btn.cyan {
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 5px #00e5ff, inset 0 0 10px #00e5ff;
+        }
+        .btn.cyan:hover {
+            background: rgba(0, 229, 255, 0.2); 
+        }
+        .btn.cyan span {
+            border: 2px solid #00e5ff; 
+        }
+
+        .btn span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            border-radius: 50%;
+            animation: animate 2s linear infinite;
+        }
+        @keyframes animate {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Colorful Button Ripple Effects</h2>
+    <div class="button-container">
+        <a href="#" class="btn pink">Click me!</a>
+        <a href="#" class="btn cyan">Click me!</a>
+    </div>
+</body>
+<script>
+    let btn = document.querySelectorAll('.btn')
+    btn.forEach(btn => {
+        btn.onclick = function (e) {
+            let x = e.pageX - e.target.offsetLeft;
+            let y = e.pageY - e.target.offsetTop;
+            let ripples = document.createElement('span');
+            ripples.style.left = x + 'px';
+
+            let color = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+
+            ripples.style.top = y + 'px';
+            this.appendChild(ripples);
+            ripples.style.borderColor = color;
+
+            setTimeout(() => {
+                ripples.remove();
+            }, 2000);
+        }
+    })
+</script>
+
+</html>
