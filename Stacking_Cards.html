@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Stacking Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2a005c, #9b59b6);
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stack {
+            perspective: 1200px;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 250px;
+            margin-bottom: 50vh;
+        }
+
+        .stack div {
+            width: min(95%, 1000px);
+            height: 550px;
+            margin: 0 auto;
+            border-radius: 40px;
+            position: sticky;
+            transform-style: preserve-3d;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.4s ease, border 0.4s ease;
+            animation: animate 1s linear both;
+            animation-timeline: view();
+            animation-range: entry 150% cover 50%;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .stack div:hover {
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .stack :nth-child(1) {
+            background: url(https://i.pinimg.com/736x/b1/d6/c4/b1d6c416f7ae05fd72591380f5776276.jpg) center/cover;
+            top: 40px;
+        }
+
+        .stack :nth-child(2) {
+            background: url(https://i.pinimg.com/1200x/96/d2/9c/96d29c6eb8f0eaa4066f255fdd8efa4b.jpg) center/cover;
+            top: 70px;
+        }
+
+        .stack :nth-child(3) {
+            background: url(https://i.pinimg.com/1200x/8b/8d/68/8b8d68a2fbfd23930de9dbc9da6fb0c2.jpg) center/cover;
+            top: 100px;
+        }
+
+        .stack :nth-child(4) {
+            background: url(https://i.pinimg.com/736x/b7/55/44/b75544909ab365554a63830767055533.jpg) center/cover;
+            top: 130px;
+        }
+
+        .stack :nth-child(5) {
+            background: url(https://i.pinimg.com/1200x/af/6d/59/af6d591ed6797d2434434ebba2d12266.jpg) center/cover;
+            top: 160px;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) translateZ(0) rotateX(0deg) scale(1);
+                filter: brightness(1) blur(0px);
+            }
+
+            35% {
+                transform: translateY(100px) translateZ(-200px) rotateX(8deg) scale(0.9);
+                /* Darkens and blurs as it pushes back */
+                filter: brightness(0.6) blur(3px);
+            }
+
+            70% {
+                transform: translateY(20px) translateZ(120px) rotateX(2deg) scale(0.95);
+                filter: brightness(0.9) blur(1px);
+            }
+
+            100% {
+                transform: translateY(0) translateZ(0) rotateX(0deg) scale(1);
+                filter: brightness(1) blur(0px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <h1>Stacking Cards</h1>
+    </section>
+
+    <section class="stack">
+        <div class="box1">
+        </div>
+        <div class="box1">
+        </div>
+        <div class="box1">
+        </div>
+        <div class="box1">
+        </div>
+        <div class="box1">
+        </div>
+    </section>
+</body>
+
+</html>
