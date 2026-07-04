@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glowing Card</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #0a0a0f;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+    }
+
+    h2{
+      margin-top: 0;
+    }
+
+    p{
+      color: #aaa; 
+      margin-bottom: 0;
+    }
+    .card {
+      position: relative;
+      width: 300px;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      animation: animate2 5s ease-in-out infinite;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card::before,
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      z-index: -1;
+      border-radius: 23px;
+      background: linear-gradient(45deg, #ff2a5f, #ff7a00, #7928ca, #00d4ff, #ff2a5f) 0% 50% / 400%;
+      animation: animate1 8s linear infinite;
+    }
+
+    .card::after {
+      filter: blur(20px);
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      animation-play-state: paused;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes animate1{
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+    @keyframes animate2{
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>CSS Glowing Card</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis odit laborum eaque explicabo quibusdam mollitia aliquid ipsa minus neque a, asperiores debitis maxime maiores dignissimos adipisci voluptates velit sapiente animi!
+    </p>
+  </div>
+</body>
+</html>
