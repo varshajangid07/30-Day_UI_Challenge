@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Reflow Animation</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background-color: #000;
+            background-size: 24px 24px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1{
+            color: #fff;
+            margin-top: 30px;
+        }
+
+        .toggle-checkbox {
+            display: none;
+        }
+
+        .gallery-wrapper {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .instruction {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .gallery-wrapper:hover .instruction {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        .toggle-checkbox:checked~.instruction::after {
+            content: "Click to Stack";
+        }
+
+        .toggle-checkbox:not(:checked)~.instruction::after {
+            content: "Click to Separate";
+        }
+
+        .stack-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+        }
+
+        .card {
+            width: 260px;
+            height: 360px;
+            border-radius: 16px;
+            background-size: cover;
+            background-position: center;
+            border: 6px solid #ffffff;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+            transform-origin: bottom center;
+            transition: margin 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
+        }
+
+        .card-left {
+            background-image: url('https://i.pinimg.com/736x/d1/62/a4/d162a42afdcf4ccec40164d8b55c6f3f.jpg');
+            z-index: 1;
+        }
+
+        .card-center {
+            background-image: url('https://i.pinimg.com/1200x/e6/d9/83/e6d983b09927500d3bb4bd5367ffb705.jpg');
+            z-index: 3;
+        }
+
+        .card-right {
+            background-image: url('https://i.pinimg.com/1200x/73/65/61/736561520be1d26d9696c65b2de0ead0.jpg');
+            z-index: 2;
+        }
+
+        .toggle-checkbox:not(:checked)~.stack-container .card-center {
+            margin-left: -260px;
+        }
+
+        .toggle-checkbox:not(:checked)~.stack-container .card-right {
+            margin-left: -260px;
+        }
+
+        .gallery-wrapper:hover .toggle-checkbox:not(:checked)~.stack-container .card-left {
+            transform: translateX(-75px) translateY(10px) rotate(-15deg);
+            box-shadow: -15px 15px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-wrapper:hover .toggle-checkbox:not(:checked)~.stack-container .card-right {
+            transform: translateX(75px) translateY(10px) rotate(15deg);
+            box-shadow: 15px 15px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-wrapper:hover .toggle-checkbox:not(:checked)~.stack-container .card-center {
+            transform: translateY(-30px);
+            box-shadow: 0 25px 40px rgba(255, 255, 255, 0.15);
+        }
+
+        .toggle-checkbox:checked~.stack-container .card {
+            margin: 15px;
+            transform: translateX(0) translateY(0) rotate(0deg);
+        }
+
+        .toggle-checkbox:checked~.stack-container .card-center,
+        .toggle-checkbox:checked~.stack-container .card-right {
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Layout Reflow Animation</h1>
+    <label class="gallery-wrapper">
+        <input type="checkbox" class="toggle-checkbox">
+        <div class="instruction"></div>
+        <div class="stack-container">
+            <div class="card card-left"></div>
+            <div class="card card-center"></div>
+            <div class="card card-right"></div>
+        </div>
+    </label>
+</body>
+</html>
