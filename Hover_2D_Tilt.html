@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover 2D Tilt</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: -apple-system, sans-serif;
+        }
+
+        h1{
+            font-size: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .card {
+            width: 280px;
+            padding: 40px;
+            background: #1a1a1a;
+            border-radius: 16px;
+            border: 1px solid #333;
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card:hover {
+            transition: transform 0.1s ease-out;
+        }
+
+        h2 {
+            margin: 0 0 12px 0;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin: 0;
+            color: #888;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hover 2D Tilt</h1>
+    <div class="card" id="card2d">
+        <h2>2D Rotation</h2>
+        <p>Move your mouse left and right. This card tilts on a flat 2D plane.</p>
+    </div>
+
+    <script>
+        const card = document.getElementById('card2d');
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+
+            const mouseX = e.clientX - rect.left - (rect.width / 2);
+
+            const percentX = mouseX / (rect.width / 2);
+
+            const rotation = percentX * 10;
+
+            card.style.transform = `rotate(${rotation}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotate(0deg)';
+        });
+    </script>
+</body>
+</html>
