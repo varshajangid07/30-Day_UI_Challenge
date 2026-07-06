@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass and Metallic Shimmer Text</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: url('https://i.pinimg.com/1200x/29/89/ec/2989ec54d85e353625ba4c5bb24a8ce0.jpg') center/cover no-repeat fixed;
+            display: grid;
+            place-items: center;            
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        
+        h1{
+            font-size: 50px;
+            color: #fff;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem;
+            height: 100%;
+            box-sizing: border-box;            
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #fff 0%, #7928ca 25%, #fff 50%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: animate 4s linear infinite;
+        }
+
+        p {
+            color: #e2e2e5;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @keyframes animate{
+            to {
+                background-position: 200% center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Glass and Metallic Shimmer Text</h1>
+    <div class="grid">        
+        <div class="card">
+            <h2>RB19 Dominance</h2>
+            <p>Securing 21 wins out of 22 races, the RB19 is the most dominant machine in F1 history.</p>
+        </div>        
+        <div class="card">
+            <h2>Ground Effect Aero</h2>
+            <p>Adrian Newey’s design weaponized ground-effect regulations, creating immense downforce with minimal drag.</p>
+        </div>        
+        <div class="card">
+            <h2>Honda RBPT Power</h2>
+            <p>The Honda turbo hybrid power unit delivered unmatched reliability, explosive acceleration, and supreme top speed.</p>
+        </div>
+        <div class="card">
+            <h2>Max's Mastery</h2>
+            <p>Tailored to Verstappen’s aggressive style, the chassis enabled a record-breaking ten consecutive Grand Prix victories.</p>
+        </div>
+    </div>
+</body>
+</html>
