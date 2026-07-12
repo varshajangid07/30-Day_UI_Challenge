@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Vertical Bar Loader</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #0f172a; 
+            font-family: system-ui, -apple-system, sans-serif;
+            color: white;
+        }
+        h1{
+            font-size: 50px;
+            margin-bottom: 80px;
+            margin-top: -100px;
+        }
+        .loader-container {
+            display: flex;
+            gap: 6px; 
+        }
+
+        .bar {
+            width: 8px;
+            height: 30px;
+            background-color: #ffffff; 
+            border-radius: 4px; 
+            animation: animate 1s infinite ease-in-out;
+        }
+
+        .bar:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        .bar:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        .bar:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+        .bar:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes animate{
+            0%, 40%, 100% {
+                transform: translateY(0); 
+                background-color: #ffffff;
+            }
+            20% {
+                transform: translateY(-15px); 
+                background-color: #4ade80; 
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>Classic Vertical Bar Loader</h1>
+    <div class="loader-container">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+</body>
+</html>
