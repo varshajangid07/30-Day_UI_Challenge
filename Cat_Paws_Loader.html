@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Paws Loader</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #c4c4c4;
+    }
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 100px;
+    }
+
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .loader p {
+      animation: animate 3s infinite linear;
+      margin-top: 40px;
+      font-size: 25px;
+    }
+
+    .paws {
+      display: flex;
+      gap: 20px;
+    }
+
+    .fa-paw {
+      font-size: 2.5rem;
+      color: #000000;
+      opacity: 0;
+      animation: animate 2.5s infinite ease-in-out;
+    }
+
+    .paws .fa-paw:nth-child(odd) {
+      transform: translateY(15px) rotate(80deg);
+    }
+
+    .paws .fa-paw:nth-child(even) {
+      transform: translateY(-15px) rotate(100deg);
+    }
+
+    .paws .fa-paw:nth-child(1) {
+      animation-delay: 0.0s;
+    }
+
+    .paws .fa-paw:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .paws .fa-paw:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .paws .fa-paw:nth-child(4) {
+      animation-delay: 0.9s;
+    }
+
+    .paws .fa-paw:nth-child(5) {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes animate {
+      0% {
+        opacity: 0;
+        filter: drop-shadow(0px 0px 0px rgba(43, 43, 43, 0));
+      }
+
+      20% {
+        opacity: 1;
+        filter: drop-shadow(5px 5px 5px rgba(43, 43, 43, 0.5));
+      }
+
+      70%,
+      100% {
+        opacity: 0;
+        filter: drop-shadow(0px 0px 0px rgba(43, 43, 43, 0));
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Cat Paws Loader</h1>
+  <div class="loader">
+    <div class="paws">
+      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"></i>
+      <i class="fa-solid fa-paw"></i>
+    </div>
+    <p>Loading</p>
+  </div>
+</body>
+</html>
