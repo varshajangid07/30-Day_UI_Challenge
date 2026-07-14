@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Face Loader</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #09090b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .loader-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .cat-icon {
+            position: relative;
+            width: 80px;
+            height: 65px;
+            background: #ffffff;
+            border-radius: 40px 40px 30px 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            animation: float 2s ease-in-out infinite alternate;
+        }
+
+        .ear {
+            position: absolute;
+            top: -12px;
+            width: 0;
+            height: 0;
+            border-left: 14px solid transparent;
+            border-right: 14px solid transparent;
+            border-bottom: 26px solid #ffffff;
+        }
+
+        .ear.left {
+            left: 2px;
+            transform: rotate(-25deg);
+        }
+
+        .ear.right {
+            right: 2px;
+            transform: rotate(25deg);
+        }
+
+        .eye {
+            position: absolute;
+            top: 26px;
+            width: 10px;
+            height: 14px;
+            background: #09090b;
+            border-radius: 50%;
+            animation: blink 4s infinite;
+        }
+
+        .eye.left {
+            left: 18px;
+        }
+
+        .eye.right {
+            right: 18px;
+        }
+
+        .nose {
+            position: absolute;
+            top: 36px;
+            left: 36px;
+            width: 8px;
+            height: 5px;
+            background: #ff7597;
+            border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+        }
+
+        .blush {
+            position: absolute;
+            top: 36px;
+            width: 14px;
+            height: 6px;
+            background: #ff7597;
+            border-radius: 50%;
+            opacity: 0.4;
+            filter: blur(2px);
+        }
+
+        .blush.left {
+            left: 6px;
+        }
+
+        .blush.right {
+            right: 6px;
+        }
+
+        .text {
+            color: #888891;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 15px;
+            animation: text-pulse 1.5s infinite alternate;
+        }
+
+
+        @keyframes blink{
+            0%,
+            4%,
+            10%,
+            100% {
+                transform: scaleY(1);
+            }
+            7% {
+                transform: scaleY(0.1);
+            }
+        }
+
+        @keyframes float{
+            0% {
+                transform: translateY(4px);
+            }
+            100% {
+                transform: translateY(-4px);
+            }
+        }
+        @keyframes text-pulse{
+            0% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-wrapper">
+        <div class="cat-icon">
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="blush left"></div>
+            <div class="blush right"></div>
+            <div class="nose"></div>
+        </div>
+    </div>
+    <div class="text">Loading...</div>
+</body>
+</html>
