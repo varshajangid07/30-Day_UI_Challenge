@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Search Bar</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            background-color: #272727;
+            font-family: sans-serif;
+        }
+
+        h1{
+            margin-bottom: 50px;
+        }
+        .search-input {
+            width: 50px;
+            height: 50px;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            border-radius: 25px;
+            border: 2px solid #a3b1c6;
+            background-color: transparent;
+            font-size: 1rem;
+            color: #333;
+            outline: none;
+            transition: width 0.4s ease-in-out, background-color 0.4s, border-color 0.4s;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>');
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+
+        .search-input:focus {
+            width: 300px;
+            background-color: white;
+            border-color: #4facfe;
+            padding-left: 45px;
+        }
+
+        .search-input::placeholder {
+            color: transparent;
+            transition: color 0.4s;
+        }
+
+        .search-input:focus::placeholder {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Expanding Search Bar</h1>
+    <input type="text" class="search-input" placeholder="Type to search...">
+</body>
+</html>
