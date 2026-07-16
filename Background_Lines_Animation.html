@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Lines Animation</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #050505;
+            font-family: sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        .grid-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+        }
+
+        .lines-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .moving-line {
+            position: absolute;
+            top: -150px;
+            width: 1px;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, #7f00ff, #00d2ff);
+            opacity: 0;
+        }
+
+        .line-1 {
+            left: 150px;
+            animation: animate 4s infinite linear 0s;
+        }
+
+        .line-2 {
+            left: 400px;
+            animation: animate 6s infinite linear 2s;
+            height: 200px;
+        }
+
+        .line-3 {
+            left: 750px;
+            animation: animate 5s infinite linear 1s;
+        }
+
+        .line-4 {
+            right: 250px;
+            animation: animate 7s infinite linear 3s;
+            background: linear-gradient(to bottom, transparent, #ff3366, #ff8a00);
+        }
+
+        @keyframes animate{
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-background"></div>
+    <div class="lines-container">
+        <div class="moving-line line-1"></div>
+        <div class="moving-line line-2"></div>
+        <div class="moving-line line-3"></div>
+        <div class="moving-line line-4"></div>
+    </div>
+    <div class="content">
+        <h1>Background Line Effect</h1>
+    </div>
+</body>
+</html>
