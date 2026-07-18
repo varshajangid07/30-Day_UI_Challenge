@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Image Split & Glassmorphism Flip</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #1e1b4b, #312e81, #4338ca);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .intro,
+    .outro {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .sticky-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .sticky-header {
+      position: absolute;
+      top: 15%;
+      font-size: 2.5rem;
+      opacity: 0;
+      transform: translateY(50px);
+      will-change: transform, opacity;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35%;
+      perspective: 1200px;
+      gap: 0;
+      will-change: width, gap;
+    }
+
+    .card {
+      position: relative;
+      width: 33.333%;
+      aspect-ratio: 5 / 7;
+      transform-style: preserve-3d;
+      transform-origin: top;
+      will-change: transform, border-radius;
+    }
+
+    #card-1 {
+      border-radius: 20px 0 0 20px;
+    }
+
+    #card-2 {
+      border-radius: 0;
+    }
+
+    #card-3 {
+      border-radius: 0 20px 20px 0;
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: inherit;
+      overflow: hidden;
+    }
+
+    .card-front img {
+      width: 300%;
+      height: 100%;
+      object-fit: cover;
+      max-width: none;
+    }
+
+    #card-1 .card-front img {
+      transform: translateX(0);
+    }
+
+    #card-2 .card-front img {
+      transform: translateX(-33.333%);
+    }
+
+    #card-3 .card-front img {
+      transform: translateX(-66.666%);
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      color: #fff;
+    }
+
+    .card-back span {
+      font-size: 1.2rem;
+      opacity: 0.6;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .card-back h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-back p {
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="intro">
+    <h1>Scroll Down</h1>
+  </section>
+
+  <section class="sticky-section">
+    <h2 class="sticky-header">Scroll Image Split & Glassmorphism Flip</h2>
+    <div class="card-container">
+      <div class="card" id="card-1">
+        <div class="card-front">
+          <img src="https://i.pinimg.com/1200x/ce/99/7d/ce997d09e4011dc8d4bae1245a7a3ebd.jpg"
+            alt="Cat">
+        </div>
+        <div class="card-back">
+          <span>01</span>
+          <h3>Feline Grace</h3>
+          <p>Cats have a highly flexible spine and lack a true collarbone, allowing them to squeeze through tight spaces
+            and land on their feet.</p>
+        </div>
+      </div>
+      <div class="card" id="card-2">
+        <div class="card-front">
+          <img src="https://i.pinimg.com/1200x/ce/99/7d/ce997d09e4011dc8d4bae1245a7a3ebd.jpg"
+            alt="Cat">
+        </div>
+        <div class="card-back">
+          <span>02</span>
+          <h3>Purr Therapy</h3>
+          <p>A cat's purr vibrates at a frequency of 25 to 150 Hertz, which has been shown to lower stress and even
+            promote tissue healing.</p>
+        </div>
+      </div>
+      <div class="card" id="card-3">
+        <div class="card-front">
+          <img src="https://i.pinimg.com/1200x/ce/99/7d/ce997d09e4011dc8d4bae1245a7a3ebd.jpg"
+            alt="Cat">
+        </div>
+        <div class="card-back">
+          <span>03</span>
+          <h3>Night Vision</h3>
+          <p>Thanks to a reflective layer behind their retinas called the tapetum lucidum, cats can see in near total
+            darkness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis();
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000) });
+    gsap.ticker.lagSmoothing(0);
+
+    let isGapAnimCompleted = false;
+    let isFlipAnimCompleted = false;
+
+    const widthMap = gsap.utils.mapRange(0, 0.25, 35, 75);
+    const headerYMap = gsap.utils.mapRange(0.1, 0.25, 50, 0);
+    const headerOpacityMap = gsap.utils.mapRange(0.1, 0.25, 0, 1);
+
+    ScrollTrigger.create({
+      trigger: ".sticky-section",
+      start: "top top",
+      end: "+=300%",
+      pin: true,
+      scrub: true,
+      onUpdate: (self) => {
+        const p = self.progress;
+
+        if (p >= 0.1 && p <= 0.25) {
+          gsap.set(".sticky-header", { y: headerYMap(p), opacity: headerOpacityMap(p) });
+        } else if (p < 0.1) {
+          gsap.set(".sticky-header", { y: 50, opacity: 0 });
+        } else {
+          gsap.set(".sticky-header", { y: 0, opacity: 1 });
+        }
+
+        if (p <= 0.25) {
+          gsap.set(".card-container", { width: `${widthMap(p)}%` });
+        } else {
+          gsap.set(".card-container", { width: "75%" });
+        }
+
+        if (p >= 0.35 && !isGapAnimCompleted) {
+          isGapAnimCompleted = true;
+          gsap.to(".card-container", { gap: "2rem", duration: 0.5 });
+          gsap.to(".card", { borderRadius: "20px", duration: 0.5 });
+        } else if (p < 0.35 && isGapAnimCompleted) {
+          isGapAnimCompleted = false;
+          gsap.to(".card-container", { gap: "0rem", duration: 0.5 });
+          gsap.to("#card-1", { borderRadius: "20px 0 0 20px", duration: 0.5 });
+          gsap.to("#card-2", { borderRadius: "0", duration: 0.5 });
+          gsap.to("#card-3", { borderRadius: "0 20px 20px 0", duration: 0.5 });
+        }
+
+        if (p >= 0.70 && !isFlipAnimCompleted) {
+          isFlipAnimCompleted = true;
+          gsap.to(".card", { rotateY: 180, stagger: 0.1, duration: 0.8, ease: "power2.out" });
+          gsap.to("#card-1", { y: 20, rotateZ: -5, duration: 0.8, ease: "power2.out" });
+          gsap.to("#card-3", { y: 20, rotateZ: 5, duration: 0.8, delay: 0.2, ease: "power2.out" });
+        } else if (p < 0.70 && isFlipAnimCompleted) {
+          isFlipAnimCompleted = false;
+          gsap.to(".card", { rotateY: 0, stagger: { each: 0.1, from: "end" }, duration: 0.8, ease: "power2.out" });
+          gsap.to(["#card-1", "#card-3"], { y: 0, rotateZ: 0, duration: 0.8, ease: "power2.out" });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
