@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotlight Grid</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: #09090b;
+      display: grid;
+      place-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 2rem;
+    }
+
+    h1{
+      color: #FFFFFF;
+    }
+
+    #spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 1;
+    }
+
+    #spotlight-grid:hover .card::before {
+      opacity: 1;
+    }
+
+    .card-inner {
+      background-color: #121214;
+      border-radius: 14px;
+      height: 100%;
+      padding: 2.5rem;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-inner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 1;
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    .card:hover .card-inner::before {
+      opacity: 1;
+    }
+
+    h3 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin: 0 0 10px 0;
+      position: relative;
+      z-index: 3;
+    }
+
+    p {
+      color: #a1a1aa;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin: 0;
+      position: relative;
+      z-index: 3;
+    }
+
+    @media (max-width: 768px) {
+      #spotlight-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Spotlight Grid</h1>
+  <div id="spotlight-grid">
+    <div class="card">
+      <div class="card-inner">
+        <h3>Box-1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptate suscipit quasi recusandae voluptatum aliquam!</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <h3>Box-2</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias pariatur quibusdam dolor optio magni esse id
+          temporibus velit.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <h3>Box-3</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, aperiam laudantium molestiae earum repellendus!</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <h3>Box-4</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium numquam distinctio dicta ducimus optio.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const grid = document.getElementById('spotlight-grid');
+
+    grid.onmousemove = e => {
+
+      for (const card of document.getElementsByClassName('card')){
+
+        const rect = card.getBoundingClientRect(),
+          x = e.clientX - rect.left,
+          y = e.clientY - rect.top;
+
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }
+    }
+  </script>
+</body>
+</html>
