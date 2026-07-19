@@ -3,55 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Animation Gallery</title>
+    <title>30-Day UI Challenge Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: sans-serif;
-            background-color: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 50px;
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --accent: #FAEB36;
+            --accent-alt: #695eff;
+            --border-color: #333333;
         }
-        .gallery {
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
             align-items: center;
-            margin-top: 30px;
         }
-        a {
-            display: block;
-            width: 300px;
-            padding: 15px;
-            background-color: #333;
-            color: #FAEB36;
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            align-self: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            font-size: 1.8rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px 20px;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        a:hover {
-            background-color: #555;
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 25px rgba(250, 235, 54, 0.15);
         }
-        .coming-soon {
-            color: #888;
-            background-color: #222;
-            pointer-events: none;
+
+        .fav-card {
+            background: linear-gradient(145deg, #222222, #1a1a1a);
+            border-color: #444;
+        }
+
+        .fav-card:hover {
+            border-color: var(--accent-alt);
+            box-shadow: 0 8px 25px rgba(126, 94, 255, 0.2);
+        }
+
+        .fav-card .day-badge {
+            color: var(--accent-alt);
+        }
+
+        .fav-card::before {
+            background-color: var(--accent-alt);
+        }
+
+        .day-badge {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 1.15rem;
+            font-weight: 400;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .fav-card::before {
+            background-color: var(--accent-alt);
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>CSS Animation Gallery</h1>
+        <p>A collection of my 30-Day UI Challenge micro-interactions and animations. Click any card to view the effect!
+        </p>
+    </header>
 
-    <h1>My CSS Animation Gallery</h1>
-    <p>A collection of 5 pure CSS micro-interactions. Click to view!</p>
-
+    <!-- Top 7 Favorites Section -->
+    <h2 class="section-title">Top 7 Favorites</h2>
     <div class="gallery">
-        <a href="Glowing.html">1. Glowing button</a>
-        <a href="Staggered_Glowing_Wave.html" >2. Staggered Glowing Wave</a>
-        <a href="Scroll-Driven_Animation.html" >3. Scroll-Driven Animation</a>
-        <a href="day4.html" class="coming-soon">4. Coming Soon...</a>
-        <a href="day5.html" class="coming-soon">5. Coming Soon...</a>
+        <a href="Glowing.html" class="card fav-card">
+            <span class="day-badge">#1 Favorite • Day 3</span>
+            <span class="title">Glowing Button</span>
+        </a>
+        <a href="Cat_Paws_Loader.html" class="card fav-card">
+            <span class="day-badge">#2 Favorite • Day 25</span>
+            <span class="title">Cat Paws Loader</span>
+        </a>
+        <a href="Layout_Reflow_Animation.html" class="card fav-card">
+            <span class="day-badge">#3 Favorite • Day 4</span>
+            <span class="title">Layout Reflow Animation</span>
+        </a>
+        <a href="Spinning_Conic_Gradient_Border.html" class="card fav-card">
+            <span class="day-badge">#4 Favorite • Day 8</span>
+            <span class="title">Spinning Conic Gradient Border</span>
+        </a>
+        <a href="Neon_Jelly_Hover_Text.html" class="card fav-card">
+            <span class="day-badge">#5 Favorite • Day 13</span>
+            <span class="title">Neon Jelly Hover Text</span>
+        </a>
+        <a href="Typewriter_Animation.html" class="card fav-card">
+            <span class="day-badge">#6 Favorite • Day 4</span>
+            <span class="title">Typewriter Animation</span>
+        </a>
+        <a href="Spotlight_Grid.html" class="card fav-card">
+            <span class="day-badge">#7 Favorite • Day 30</span>
+            <span class="title">Spotlight Grid</span>
+        </a>
     </div>
 
+    <!-- All 30 Days Section -->
+    <h2 class="section-title"> All 30-Day Animations</h2>
+    <div class="gallery">
+        <!-- Day 1 -->
+        <a href="Lift_and_Morph.html" class="card">
+            <span class="day-badge">Day 1</span>
+            <span class="title">Lift and Morph</span>
+        </a>
+        <!-- Day 2 -->
+        <a href="Split.html" class="card">
+            <span class="day-badge">Day 2</span>
+            <span class="title">Split</span>
+        </a>
+        <!-- Day 3 -->
+        <a href="Glowing.html" class="card">
+            <span class="day-badge">Day 3</span>
+            <span class="title">Glowing</span>
+        </a>
+        <a href="Glowing_Marquee_Grid.html" class="card">
+            <span class="day-badge">Day 3</span>
+            <span class="title">Glowing Marquee Grid</span>
+        </a>
+        <!-- Day 4 -->
+        <a href="Ambient_Glass.html" class="card">
+            <span class="day-badge">Day 4</span>
+            <span class="title">Ambient Glass</span>
+        </a>
+        <a href="Cursor_Tracking.html" class="card">
+            <span class="day-badge">Day 4</span>
+            <span class="title">Cursor Tracking</span>
+        </a>
+        <!-- Day 5 -->
+        <a href="Flip_Loader.html" class="card">
+            <span class="day-badge">Day 5</span>
+            <span class="title">Flip Loader</span>
+        </a>
+        <a href="Staggered_Bounce_Loader.html" class="card">
+            <span class="day-badge">Day 5</span>
+            <span class="title">Staggered Bounce Loader</span>
+        </a>
+        <!-- Day 6 -->
+        <a href="Staggered_Glowing_Wave.html" class="card">
+            <span class="day-badge">Day 6</span>
+            <span class="title">Staggered Glowing Wave</span>
+        </a>
+        <!-- Day 7 -->
+        <a href="Pulse_Effect.html" class="card">
+            <span class="day-badge">Day 7</span>
+            <span class="title">Pulse Effect</span>
+        </a>
+        <!-- Day 8 -->
+        <a href="Animated_Background_Gradient.html" class="card">
+            <span class="day-badge">Day 8</span>
+            <span class="title">Animated Background Gradient</span>
+        </a>
+        <a href="Spinning_Conic_Gradient_Border.html" class="card">
+            <span class="day-badge">Day 8</span>
+            <span class="title">Spinning Conic Gradient Border</span>
+        </a>
+        <!-- Day 9 -->
+        <a href="Scroll-Driven_Animation.html" class="card">
+            <span class="day-badge">Day 9</span>
+            <span class="title">Scroll-Driven Animation</span>
+        </a>
+        <!-- Day 10 -->
+        <a href="Blob_Animation.html" class="card">
+            <span class="day-badge">Day 10</span>
+            <span class="title">Blob Animation</span>
+        </a>
+        <!-- Day 11 -->
+        <a href="Colorful_Button_Ripple_Effects.html" class="card">
+            <span class="day-badge">Day 11</span>
+            <span class="title">Colorful Button Ripple Effects</span>
+        </a>
+        <!-- Day 12 -->
+        <a href="Stacking_Cards.html" class="card">
+            <span class="day-badge">Day 12</span>
+            <span class="title">Stacking Cards</span>
+        </a>
+        <!-- Day 13 -->
+        <a href="Glassmorphism_Login_Form.html" class="card">
+            <span class="day-badge">Day 13</span>
+            <span class="title">Glassmorphism Login Form</span>
+        </a>
+        <a href="Neon_Jelly_Hover_Text.html" class="card">
+            <span class="day-badge">Day 13</span>
+            <span class="title">Neon Jelly Hover Text</span>
+        </a>
+        <!-- Day 14 -->
+        <a href="Image_Scroll_Reveal.html" class="card">
+            <span class="day-badge">Day 14</span>
+            <span class="title">Image Scroll Reveal</span>
+        </a>
+        <a href="Spotlight_Hover_Effect.html" class="card">
+            <span class="day-badge">Day 14</span>
+            <span class="title">Spotlight Hover Effect</span>
+        </a>
+        <!-- Day 15 -->
+        <a href="Glass_Button.html" class="card">
+            <span class="day-badge">Day 15</span>
+            <span class="title">Glass Button</span>
+        </a>
+        <a href="Staggered_Reveal.html" class="card">
+            <span class="day-badge">Day 15</span>
+            <span class="title">Staggered Reveal</span>
+        </a>
+        <!-- Day 16 -->
+        <a href="Glowing_Card.html" class="card">
+            <span class="day-badge">Day 16</span>
+            <span class="title">Glowing Card</span>
+        </a>
+        <a href="Layout_Reflow_Animation.html" class="card">
+            <span class="day-badge">Day 16</span>
+            <span class="title">Layout Reflow Animation</span>
+        </a>
+        <!-- Day 17 -->
+        <a href="Hover_2D_Tilt.html" class="card">
+            <span class="day-badge">Day 17</span>
+            <span class="title">Hover 2D Tilt</span>
+        </a>
+        <a href="Scroll_Cinematic_Scale.html" class="card">
+            <span class="day-badge">Day 17</span>
+            <span class="title">Scroll Cinematic Scale</span>
+        </a>
+        <!-- Day 18 -->
+        <a href="Glass_and_Metallic_Shimmer_Text.html" class="card">
+            <span class="day-badge">Day 18</span>
+            <span class="title">Glass and Metallic Shimmer Text</span>
+        </a>
+        <!-- Day 19 -->
+        <a href="Staggered_Blur-In_Scroll_Reveal.html" class="card">
+            <span class="day-badge">Day 19</span>
+            <span class="title">Staggered Blur-In Scroll Reveal</span>
+        </a>
+        <!-- Day 20 -->
+        <a href="Shifting_Gradient_Background.html" class="card">
+            <span class="day-badge">Day 20</span>
+            <span class="title">Shifting Gradient Background</span>
+        </a>
+        <!-- Day 21 -->
+        <a href="Flat_Rotation.html" class="card">
+            <span class="day-badge">Day 21</span>
+            <span class="title">Flat Rotation</span>
+        </a>
+        <!-- Day 22 -->
+        <a href="Neumorphic_Pulse_Button.html" class="card">
+            <span class="day-badge">Day 22</span>
+            <span class="title">Neumorphic Pulse Button</span>
+        </a>
+        <!-- Day 23 -->
+        <a href="Typewriter_Animation.html" class="card">
+            <span class="day-badge">Day 23</span>
+            <span class="title">Typewriter Animation</span>
+        </a>
+        <!-- Day 24 -->
+        <a href="Classic_Vertical_Bar_Loader.html" class="card">
+            <span class="day-badge">Day 24</span>
+            <span class="title">Classic Vertical Bar Loader</span>
+        </a>
+        <!-- Day 25 -->
+        <a href="Cat_Paws_Loader.html" class="card">
+            <span class="day-badge">Day 25</span>
+            <span class="title">Cat Paws Loader</span>
+        </a>
+        <!-- Day 26 -->
+        <a href="Cat_Face_Loader.html" class="card">
+            <span class="day-badge">Day 26</span>
+            <span class="title">Cat Face Loader</span>
+        </a>
+        <!-- Day 27 -->
+        <a href="Expanding_Search_Bar.html" class="card">
+            <span class="day-badge">Day 27</span>
+            <span class="title">Expanding Search Bar</span>
+        </a>
+        <a href="Floating_Element.html" class="card">
+            <span class="day-badge">Day 27</span>
+            <span class="title">Floating Element</span>
+        </a>
+        <!-- Day 28 -->
+        <a href="Background_Lines_Animation.html" class="card">
+            <span class="day-badge">Day 28</span>
+            <span class="title">Background Lines Animation</span>
+        </a>
+        <!-- Day 29 -->
+        <a href="Scroll_Timeline.html" class="card">
+            <span class="day-badge">Day 29</span>
+            <span class="title">Scroll Timeline</span>
+        </a>
+        <!-- Day 30 -->
+        <a href="Infinite_Marquee.html" class="card">
+            <span class="day-badge">Day 30</span>
+            <span class="title">Infinite Marquee</span>
+        </a>
+        <a href="Scroll_Image_Split_&_Glassmorphism_Flip.html" class="card">
+            <span class="day-badge">Day 30</span>
+            <span class="title">Scroll Image Split & Glassmorphism Flip</span>
+        </a>
+        <a href="Spotlight_Grid.html" class="card">
+            <span class="day-badge">Day 30</span>
+            <span class="title">Spotlight Grid</span>
+        </a>
+    </div>
 </body>
 </html>
